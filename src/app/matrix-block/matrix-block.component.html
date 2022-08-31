@@ -1,0 +1,16 @@
+<div
+  class="h-12 w-12 rounded-md text-center flex items-center justify-center hover:shadow-sm hover:text-white cursor-pointer bg-sky-400 hover:bg-sky-500"
+  [ngClass]="{
+    'bg-pink-600 cursor-not-allowed': selectedByCircle,
+    'bg-teal-600 cursor-not-allowed': selectedByCross
+  }"
+  (click)="selectBlock()"
+>{{ele}}
+</div>
+
+<!-- 
+  [ngClass]="{
+    'bg-pink-600 cursor-not-allowed': selectedByCross,
+    'bg-teal-600 cursor-not-allowed': selectedByCircle
+  }"
+ -->
