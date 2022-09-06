@@ -19,6 +19,9 @@ export class MatrixBlockComponent implements OnInit {
   @Input()
   index!: number;
 
+  @Input()
+  isWinnerBlock: boolean|undefined = false;
+
   @Output() eleIndexEvent = new EventEmitter<number>();
 
   selectedByCross: boolean = false;
@@ -26,8 +29,7 @@ export class MatrixBlockComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   selectBlock() {
     if (!this.ele) {
@@ -38,16 +40,11 @@ export class MatrixBlockComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-      // changes['ele'].currentValue === 'X' ? this.selectedByCross = true : this.selectedByCircle = true;
-      console.log(this.index);
-      // console.log(changes['ele'].currentValue);
-
-      if(changes['ele'] && changes['ele'].currentValue ==='X'){
-        this.selectedByCross = true;
-      }
-      if(changes['ele'] && changes['ele'].currentValue==='C'){
-        this.selectedByCircle = true;
-      }
-      
+    if (changes['ele'] && changes['ele'].currentValue === 'X') {
+      this.selectedByCross = true;
+    }
+    if (changes['ele'] && changes['ele'].currentValue === 'O') {
+      this.selectedByCircle = true;
+    }
   }
 }

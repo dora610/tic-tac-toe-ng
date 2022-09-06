@@ -2,12 +2,23 @@
   Welcome to {{ title }}
 </h1>
 
-<div class="flex justify-center mt-8 flex-col items-center gap-8">
-  <div class="grid grid-cols-3 grid-rows-3 place-items-center w-48 gap-2 bg-sky-50 rounded-md  p-4">
-    <app-matrix-block *ngFor="let item of matrix; let i=index" [ele]="item" [index]="i" (eleIndexEvent)="updateIndex($event)"></app-matrix-block>
-    
-  </div>
-
-  <button class="rounded-full bg-sky-800 text-white py-1 px-4">Reset</button>
+<div class="my-4 text-center font-bold text-2xl h-4">
+  <h3 class="text-amber-700">{{successMsg}}</h3>
+  <h3 class="text-red-700">{{errorMsg}}</h3>
 </div>
 
+<div class="flex justify-center mt-8 flex-col items-center gap-8">
+  <div
+    class="grid grid-cols-3 grid-rows-3 w-60 h-60 gap-2 bg-sky-100 rounded-md p-4"
+  >
+    <app-matrix-block
+      *ngFor="let item of matrix; let i = index"
+      [ele]="item"
+      [index]="i"
+      [isWinnerBlock]="winner && winner.winnerBlocks.includes(i)"
+      (eleIndexEvent)="updateIndex($event)"
+    ></app-matrix-block>
+  </div>
+
+  <button class="rounded-full bg-red-600 text-white py-1 px-4" (click)="resetGame()">Reset</button>
+</div>
